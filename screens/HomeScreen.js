@@ -12,11 +12,13 @@ const HomeScreen = ({ navigation }) => {
       headerStyle: { backgroundColor: '#fff' },
       headerTitleStyle: { color: 'black' },
       headerTintColor: 'black',
-      headerLeft: () => {
-        <View style={{ margingLeft: 20 }}>
-          <TouchableOpacity></TouchableOpacity>
-        </View>;
-      },
+      headerLeft: () => (
+        <View style={{ marginLeft: 20 }}>
+          <TouchableOpacity>
+            <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} />
+          </TouchableOpacity>
+        </View>
+      ),
     });
   }, []);
 
