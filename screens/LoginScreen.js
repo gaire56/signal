@@ -4,6 +4,7 @@ import { KeyboardAvoidingView } from 'react-native';
 import { Button, Input, Image } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
 import { auth } from '../firebase';
+import { Platform } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -26,9 +27,12 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'position' : 'height'}
+      style={styles.container}
+      keyboardVerticalOffset={40}
+    >
       <StatusBar style="light" />
-
       <Image
         source={{
           uri:

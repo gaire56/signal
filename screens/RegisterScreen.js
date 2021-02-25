@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
 import { KeyboardAvoidingView } from 'react-native';
 import { auth } from '../firebase';
+import { Platform } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -32,7 +33,11 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'position' : 'height'}
+      style={styles.container}
+      keyboardVerticalOffset={40}
+    >
       <StatusBar style="light" />
 
       <Text h3 style={{ marginBottom: 50 }}>
